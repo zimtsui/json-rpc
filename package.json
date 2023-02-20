@@ -2,8 +2,8 @@
   "name": "@zimtsui/json-rpc",
   "version": "0.0.1",
   "description": "",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./build/json-rpc.js",
+  "types": "./build/json-rpc.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -b ./src/tsconfig.json",
