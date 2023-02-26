@@ -5,7 +5,7 @@ export interface Obj {
 export interface Req<
 	id extends string | number,
 	method extends string,
-	params extends {} | readonly unknown[] = any,
+	params extends {} | readonly unknown[],
 > extends Obj {
 	readonly id: id;
 	readonly method: method;

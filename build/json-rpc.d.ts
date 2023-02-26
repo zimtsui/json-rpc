@@ -1,7 +1,7 @@
 export interface Obj {
     readonly jsonrpc: '2.0';
 }
-export interface Req<id extends string | number, method extends string, params extends {} | readonly unknown[] = any> extends Obj {
+export interface Req<id extends string | number, method extends string, params extends {} | readonly unknown[]> extends Obj {
     readonly id: id;
     readonly method: method;
     readonly params: params;
