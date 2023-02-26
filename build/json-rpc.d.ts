@@ -6,20 +6,16 @@ export interface Req<id extends string | number, method extends string, params e
     readonly method: method;
     readonly params: params;
 }
-export interface Res<id extends string | number, result, errorData> extends Obj {
-    readonly id: id;
-    readonly result?: result;
-    readonly error?: Res.Fail.Error<errorData>;
-}
+export type Res<id extends string | number, result, errorData> = Res.Succ<id, result> | Res.Fail<id, errorData>;
 export declare namespace Res {
-    interface Succ<id extends string | number, result> extends Res<id, result, never> {
+    interface Succ<id extends string | number, result> {
         readonly id: id;
         readonly result: result;
-        readonly error: never;
+        readonly error: undefined;
     }
-    interface Fail<id extends string | number, errorData> extends Res<id, never, errorData> {
+    interface Fail<id extends string | number, errorData> {
         readonly id: id;
-        readonly result: never;
+        readonly result: undefined;
         readonly error: Fail.Error<errorData>;
     }
     namespace Fail {

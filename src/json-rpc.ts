@@ -13,31 +13,27 @@ export interface Req<
 }
 
 
-export interface Res<
+export type Res<
 	id extends string | number,
 	result,
 	errorData,
-> extends Obj {
-	readonly id: id;
-	readonly result?: result;
-	readonly error?: Res.Fail.Error<errorData>;
-}
+> = Res.Succ<id, result> | Res.Fail<id, errorData>;
 export namespace Res {
 	export interface Succ<
 		id extends string | number,
 		result,
-	> extends Res<id, result, never> {
+	> {
 		readonly id: id;
 		readonly result: result;
-		readonly error: never;
+		readonly error: undefined;
 	}
 
 	export interface Fail<
 		id extends string | number,
 		errorData,
-	> extends Res<id, never, errorData> {
+	> {
 		readonly id: id;
-		readonly result: never;
+		readonly result: undefined;
 		readonly error: Fail.Error<errorData>;
 	}
 	export namespace Fail {
